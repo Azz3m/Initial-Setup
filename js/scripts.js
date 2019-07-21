@@ -1,34 +1,22 @@
-<script>
-			$("#mycarousel").carousel( { interval: 2000 } );
-			$("#carouselButton").click(function(){
-				if ($("#carouselButton").children("span").hasClass('fa-pause'))
-					{
-					$("#mycarousel").carousel('pause');
-					$("#carouselButton").children("span").removeClass('fa-pause');
-					$("#carouselButton").children("span").addClass('fa-play');
-				}
-				else if ($("#carouselButton").children("span").hasClass('fa-play')){
-					$("#mycarousel").carousel('cycle');
-					$("#carouselButton").children("span").removeClass("fa-play");
-					$("#carouselButton").children("span").addClass('fa-pause');
-				}
-			
-			});
-			$("#login").click(function(){
-				$("#loginModal").modal('show');
-			});
-			$("#ReserveATable").click(function(){
-				$("#ReserveTableModal").modal('show');
-			});
-   	      /*  $(document).ready(function(){
-            $("#mycarousel").carousel( { interval: 2000 } );
-            $("#carousel-pause").click(function(){
-                $("#mycarousel").carousel('pause');
-            });
-            $("#carousel-play").click(function(){
-                $("#mycarousel").carousel('cycle');
-            });
-        });
-		*/ 
-</script>
-
+$(document).ready(function(){
+    $("#mycarousel").carousel( { interval: 2000 } );
+    $("#carousel-button").click(function(){
+        if ($("#carousel-button").children("span").hasClass('fa-pause')) {
+            $("#mycarousel").carousel('pause');
+            $("#carousel-button").children("span").removeClass('fa-pause');
+            $("#carousel-button").children("span").addClass('fa-play');
+        }
+        else if ($("#carousel-button").children("span").hasClass('fa-play')){
+            $("#mycarousel").carousel('cycle');
+            $("#carousel-button").children("span").removeClass('fa-play');
+            $("#carousel-button").children("span").addClass('fa-pause');                    
+        }
+    });
+    $("#login").click(function(){
+        $("#loginModal").modal('show');
+    });
+    
+    $("#ReserveATable").click(function(){
+        $("#ReserveTableModal").modal('show');
+    });
+});
