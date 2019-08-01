@@ -19,7 +19,13 @@ module.exports = function (grunt) {
             } 
         },
 
-        copy: {
+        
+
+        clean: {
+            build: {
+                src: [ 'dist/']
+            }
+        },copy: {
             html: {
                 files: [
                 {
@@ -48,7 +54,8 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,                  // Enable dynamic expansion
                     cwd: './',                   // Src matches are relative to this path
-                    src: ['img/*.{png,jpg,gif}'],   // Actual patterns to match
+                    dot: true,
+					src: ['img/*.{png,jpg,gif}'],   // Actual patterns to match
                     dest: 'dist/'                  // Destination path prefix
                 }]
             }
@@ -69,10 +76,10 @@ module.exports = function (grunt) {
                         css: [{
                             name: 'cssmin',
                             createConfig: function (context, block) {
-                            var generated = context.options.generated;
-                                generated.options = {
-                                    keepSpecialComments: 0, rebase: false
-                                };
+								var generated = context.options.generated;
+									generated.options = {
+										keepSpecialComments: 0, rebase: false
+									};
                             }       
                         }]
                     }
@@ -143,12 +150,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        clean: {
-            build: {
-                src: [ 'dist/']
-            }
-        },
         watch: {
             files: 'css/*.scss',
             tasks: ['sass']
@@ -173,7 +174,8 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('css', ['sass']);
-	    grunt.registerTask('build', [
+	grunt.registerTask('default', ['browserSync', 'watch']);
+	   grunt.registerTask('build', [
         'clean',
         'copy',
         'imagemin',
@@ -185,7 +187,6 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
-	grunt.registerTask('default', ['browserSync', 'watch']);
-	
 
-};
+
+}; 
